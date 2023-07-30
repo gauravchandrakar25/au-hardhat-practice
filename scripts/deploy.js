@@ -2,9 +2,11 @@ async function main() {
   const Counter = await hre.ethers.getContractFactory("Counter");
   const counter = await Counter.deploy();
 
-  await counter.deployed();
+  await counter.waitForDeployment();
 
-  console.log(`Counter deployed successfully to ${counter.address}`);
+  console.log(
+    `Contract deployed ${counter.target}`
+  );
 }
 
 // We recommend this pattern to be able to use async/await everywhere
